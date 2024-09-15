@@ -51,8 +51,8 @@ const Cart = () => {
             <img src={url+"/images/"+item.image} alt={item.name} />
             <p>{item.name}</p>
             <p>{cartItems[itemId]}</p>
-            <p>${item.price}</p>
-            <p>${totalItemPrice}</p>
+            <p>₹{item.price}</p>
+            <p>₹{totalItemPrice}</p>
             <p className="cross" onClick={() => removeFromCart(itemId)}>×</p>
           </div>
         );
@@ -63,7 +63,7 @@ const Cart = () => {
           <h2>Total</h2>
           <div className="cart-total-details">
             <b>Total:</b>
-            <p>${getTotalCartAmount()}</p>
+            <p>₹{getTotalCartAmount()}</p>
           </div>
           <button onClick={handleProceedToCheckout}>Proceed to Checkout</button>
         </div>

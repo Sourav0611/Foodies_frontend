@@ -14,6 +14,21 @@ const Navbar = ({ setShowLogin }) => {
     setIsNavOpen(prevState => !prevState);
   };
 
+  const handleMenuClick = (menuItem, path) => {
+    setMenu(menuItem);
+    setIsNavOpen(false);
+    if (path) {
+      navigate(path);
+      window.scrollTo(0, 0); // Scrolls to top when navigating to a new page
+    }
+  };
+
+  const handleLogoClick = () => {
+    navigate('/');
+    window.scrollTo(0, 0); // Scrolls to top when logo is clicked
+    setMenu('home');
+  };
+
   const logout = () => {
     localStorage.removeItem("token");
     setToken("");
@@ -23,28 +38,29 @@ const Navbar = ({ setShowLogin }) => {
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
-        <Link to='/' className="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+        {/* Click the logo or Foodies text to go to the top of the homepage */}
+        <a onClick={handleLogoClick} className="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
           <span className="navbar-logo-text">
             Food<span className="highlight">ies</span>
           </span>
           <img src={assets.logo} alt="Logo" className="me-3 navbar-logo-img" />
-        </Link>
-        <button className="navbar-toggler" type="button" onClick={toggleNav} aria-controls="navbarNav" aria-expanded={isNavOpen} aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
+        </a>
+        <a className="navbar-toggler" onClick={toggleNav}>
+          <img src={assets.list} alt="Menu" className="navbar-toggler-icon" />
+        </a>
         <div className={`collapse navbar-collapse ${isNavOpen ? 'show' : ''}`} id="navbarNav">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link to="/" onClick={() => setMenu("home")} className={`nav-link ${menu === "home" ? "active" : ""}`}>Home</Link>
+              <a href="#" onClick={() => handleMenuClick("home", "/")} className={`nav-link ${menu === "home" ? "active" : ""}`}>Home</a>
             </li>
             <li className="nav-item">
-              <a href='#explore-menu' onClick={() => setMenu("menu")} className={`nav-link ${menu === "menu" ? "active" : ""}`}>Menu</a>
+              <a href='#explore-menu' onClick={() => handleMenuClick("menu")} className={`nav-link ${menu === "menu" ? "active" : ""}`}>Menu</a>
             </li>
             <li className="nav-item">
-              <a href='#app-download' onClick={() => setMenu("mobile-app")} className={`nav-link ${menu === "mobile-app" ? "active" : ""}`}>Mobile App</a>
+              <a href='#app-download' onClick={() => handleMenuClick("mobile-app")} className={`nav-link ${menu === "mobile-app" ? "active" : ""}`}>Mobile App</a>
             </li>
             <li className="nav-item">
-              <a href='#footer' onClick={() => setMenu("contact-us")} className={`nav-link ${menu === "contact-us" ? "active" : ""}`}>Contact Us</a>
+              <a href='#footer' onClick={() => handleMenuClick("contact-us")} className={`nav-link ${menu === "contact-us" ? "active" : ""}`}>Contact Us</a>
             </li>
           </ul>
           <div className="navbar-right d-flex align-items-center">
@@ -59,7 +75,7 @@ const Navbar = ({ setShowLogin }) => {
               <div className='navbar-profile'>
                 <img src={assets.profile_icon} className='white-filter' alt="Profile" />
                 <ul className="nav-profile-dropdown">
-                  <li onClick={() => navigate('/myorders')}><img src={assets.bag_icon} alt="Orders" /><p>Orders</p></li>
+                  <li onClick={() => handleMenuClick('orders', '/myorders')}><img src={assets.bag_icon} alt="Orders" /><p>Orders</p></li>
                   <hr />
                   <li onClick={logout}><img src={assets.logout_icon} alt="Logout" /><p>Logout</p></li>
                 </ul>
