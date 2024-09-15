@@ -1,0 +1,106 @@
+.place-order{
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 50px;
+    margin-top: 100px;
+}
+.place-order-left{
+    width: 100%;
+    max-width: max(30%, 500px);
+}
+.place-order-left .title{
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+.place-order-left input{
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #c5c5c5;
+    border-radius: 4px;
+    outline-color: tomato;
+}
+.place-order-left .multi-fields{
+    display: flex;
+    gap: 10px;
+}
+.place-order-right{
+    width: 100%;
+    max-width: max(40%, 500px);
+}
+.place-order .cart-total button{
+    margin-top: 30px;
+}
+
+:root .emaill {
+    background-color: rgb(255, 255, 255);
+}
+:root .emaill{
+    color: white;
+}
+
+:root .streett {
+    background-color: rgb(255, 255, 255);
+}
+:root .streett{
+    color: white;
+}
+
+:root .phonee {
+    background-color: rgb(255, 255, 255);
+}
+:root .phonee{
+    color: white;
+}
+
+
+.lightcolors .emaill {
+    background-color: white;
+}
+.lightcolors .emaill{
+    color: black;
+}
+
+.lightcolors .streett {
+    background-color: white;
+}
+.lightcolors .streett{
+    color: rgb(255, 255, 255);
+}
+
+.lightcolors .phonee {
+    background-color: white;
+}
+.lightcolors .phonee{
+    color: rgb(255, 255, 255);
+}
+
+
+:root .multi-fields input {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0); 
+}
+
+:root .multi-fields input::placeholder {
+    color: rgb(0, 0, 0);
+}
+
+
+.lightcolors .multi-fields input {
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+}
+.lightcolors .multi-fields input::placeholder {
+    color: rgb(0, 0, 0);
+}
+
+
+:root .title {
+    color: rgb(94, 94, 94);
+}
+
+.lightcolors .title {
+    color: #c5c5c5;
+}
